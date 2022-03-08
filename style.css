@@ -93,7 +93,6 @@ a:hover {
 .texture-paper::before {
   background: url("img/texture-paper.webp");
   background-size: 280px 280px;
-  opacity: 0.6;
 }
 
 .b-parallax {
@@ -768,10 +767,6 @@ h4 {
 
 .bgc-white {
   background-color: #ffffff;
-}
-
-.bgc-dark-slate-blue {
-  background-color: #364577;
 }
 
 .bgc-atomic-tangerine {
