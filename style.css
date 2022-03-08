@@ -740,7 +740,6 @@ h4 {
 
 .white {
   color: white !important;
-  font-weight: bold;
 }
 
 .portfolio-thumb {
@@ -826,7 +825,7 @@ h4 {
 }
 
 .bg-presentation {
-  background-image: url("img/image-de-presentation.bmp");
+  background-image: url("img/image-de-presentation.jpg");
 }
 
 @media (max-width: 1024px) {
@@ -1049,4 +1048,9 @@ h4 {
 
 .col-sm-4 li {
   padding: 6px;
+}
+
+.title-contact {
+  font-weight: bold;
+  color: black;
 }
