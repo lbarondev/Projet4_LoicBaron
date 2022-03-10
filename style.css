@@ -458,7 +458,7 @@ nav .caret {
 .btn-d:hover,
 .btn-d:focus {
   color: #fff;
-  background: rgba(0, 0, 0, 0.3);
+  background: #dbdbdb;
 }
 
 button {
@@ -654,7 +654,7 @@ label,
 a {
   font-family: "helvetica";
   font-weight: 400;
-  color: black !important;
+  color: black;
 }
 
 .container {
@@ -726,7 +726,7 @@ h2 {
 }
 
 h1 {
-  color: black !important;
+  color: #f9b290 !important;
 }
 
 h4 {
@@ -744,6 +744,7 @@ h4 {
 
 .portfolio-thumb {
   margin-bottom: 24px;
+  max-height: 320px;
 }
 
 .portfolio-row {
@@ -817,11 +818,11 @@ h4 {
 }
 
 .bg-banniere {
-  background-image: url("img/la-chouette-agence-banniere.jpg");
+  background-image: url("img/la-chouette-agence-banniere.avif");
 }
 
 .bg-presentation {
-  background-image: url("img/image-de-presentation.jpg");
+  background-image: url("img/image-de-presentation.avif");
 }
 
 @media (max-width: 1024px) {
@@ -1049,4 +1050,31 @@ h4 {
 .title-contact {
   font-weight: bold;
   color: black;
+}
+
+.btn-d {
+  margin: auto;
+  margin-left: 40%;
+  width: 20%;
+}
+
+.text-descript {
+  font-size: 20px;
+  color: #565858;
+}
+
+.text-temoignage {
+  font-size: 20px;
+  color: #565858;
+  font-style: italic;
+}
+
+.identite-temoignage {
+  color: #707070;
+  font-size: 16px;
+}
+
+.text-portfolio {
+  font-size: 25px;
+  color: #707070;
 }
