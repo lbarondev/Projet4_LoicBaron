@@ -249,14 +249,12 @@ if ("undefined" == typeof jQuery)
       }),
       (d.prototype.getItemForDirection = function (t, e) {
         var i = this.getItemIndex(e);
-        if (
-          (("prev" == t && 0 === i) ||
-            ("next" == t && i == this.$items.length - 1)) &&
+        return (("prev" == t && 0 === i) ||
+          ("next" == t && i == this.$items.length - 1)) &&
           !this.options.wrap
-        )
-          return e;
-        t = (i + ("prev" == t ? -1 : 1)) % this.$items.length;
-        return this.$items.eq(t);
+          ? e
+          : ((t = (i + ("prev" == t ? -1 : 1)) % this.$items.length),
+            this.$items.eq(t));
       }),
       (d.prototype.to = function (t) {
         var e = this,
@@ -436,11 +434,11 @@ if ("undefined" == typeof jQuery)
                   this.$element.trigger("shown.bs.collapse");
               };
               if (!n.support.transition) return o.call(this);
-              t = n.camelCase(["scroll", i].join("-"));
-              this.$element
-                .one("bsTransitionEnd", n.proxy(o, this))
-                .emulateTransitionEnd(a.TRANSITION_DURATION)
-                [i](this.$element[0][t]);
+              (t = n.camelCase(["scroll", i].join("-"))),
+                this.$element
+                  .one("bsTransitionEnd", n.proxy(o, this))
+                  .emulateTransitionEnd(a.TRANSITION_DURATION)
+                  [i](this.$element[0][t]);
             }
           }
         }
@@ -450,25 +448,27 @@ if ("undefined" == typeof jQuery)
           var t = n.Event("hide.bs.collapse");
           if ((this.$element.trigger(t), !t.isDefaultPrevented())) {
             var e = this.dimension();
-            this.$element[e](this.$element[e]())[0].offsetHeight,
+            return (
+              this.$element[e](this.$element[e]())[0].offsetHeight,
               this.$element
                 .addClass("collapsing")
                 .removeClass("collapse in")
                 .attr("aria-expanded", !1),
               this.$trigger.addClass("collapsed").attr("aria-expanded", !1),
-              (this.transitioning = 1);
-            t = function () {
-              (this.transitioning = 0),
-                this.$element
-                  .removeClass("collapsing")
-                  .addClass("collapse")
-                  .trigger("hidden.bs.collapse");
-            };
-            return n.support.transition
-              ? void this.$element[e](0)
-                  .one("bsTransitionEnd", n.proxy(t, this))
-                  .emulateTransitionEnd(a.TRANSITION_DURATION)
-              : t.call(this);
+              (this.transitioning = 1),
+              (t = function () {
+                (this.transitioning = 0),
+                  this.$element
+                    .removeClass("collapsing")
+                    .addClass("collapse")
+                    .trigger("hidden.bs.collapse");
+              }),
+              n.support.transition
+                ? void this.$element[e](0)
+                    .one("bsTransitionEnd", n.proxy(t, this))
+                    .emulateTransitionEnd(a.TRANSITION_DURATION)
+                : t.call(this)
+            );
           }
         }
       }),
@@ -484,8 +484,7 @@ if ("undefined" == typeof jQuery)
           )
           .each(
             n.proxy(function (t, e) {
-              e = n(e);
-              this.addAriaAndCollapsedClass(i(e), e);
+              (e = n(e)), this.addAriaAndCollapsedClass(i(e), e);
             }, this)
           )
           .end();
@@ -506,23 +505,24 @@ if ("undefined" == typeof jQuery)
         '[data-toggle="collapse"]',
         function (t) {
           var e = n(this);
-          e.attr("data-target") || t.preventDefault();
-          (t = i(e)), (e = t.data("bs.collapse") ? "toggle" : e.data());
-          s.call(t, e);
+          e.attr("data-target") || t.preventDefault(),
+            (e = (t = i(e)).data("bs.collapse") ? "toggle" : e.data()),
+            s.call(t, e);
         }
       );
   })(jQuery),
   (function (n) {
     "use strict";
     function s(t) {
-      var e = t.attr("data-target"),
-        e =
-          (e =
-            e ||
-            ((e = t.attr("href")) &&
-              /#[A-Za-z]/.test(e) &&
-              e.replace(/.*(?=#[^\s]*$)/, ""))) && n(e);
-      return e && e.length ? e : t.parent();
+      var e = t.attr("data-target");
+      return (e =
+        (e =
+          e ||
+          ((e = t.attr("href")) &&
+            /#[A-Za-z]/.test(e) &&
+            e.replace(/.*(?=#[^\s]*$)/, ""))) && n(e)) && e.length
+        ? e
+        : t.parent();
     }
     function a(o) {
       (o && 3 === o.which) ||
@@ -553,15 +553,15 @@ if ("undefined" == typeof jQuery)
           var i = s(e),
             o = i.hasClass("open");
           if ((a(), !o)) {
-            "ontouchstart" in document.documentElement &&
-              !i.closest(".navbar-nav").length &&
-              n(document.createElement("div"))
-                .addClass("dropdown-backdrop")
-                .insertAfter(n(this))
-                .on("click", a);
-            o = { relatedTarget: this };
             if (
-              (i.trigger((t = n.Event("show.bs.dropdown", o))),
+              ("ontouchstart" in document.documentElement &&
+                !i.closest(".navbar-nav").length &&
+                n(document.createElement("div"))
+                  .addClass("dropdown-backdrop")
+                  .insertAfter(n(this))
+                  .on("click", a),
+              (o = { relatedTarget: this }),
+              i.trigger((t = n.Event("show.bs.dropdown", o))),
               t.isDefaultPrevented())
             )
               return;
@@ -588,8 +588,7 @@ if ("undefined" == typeof jQuery)
               return (
                 27 == t.which && i.find(r).trigger("focus"), e.trigger("click")
               );
-            e = i.find(".dropdown-menu li:not(.disabled):visible a");
-            e.length &&
+            (e = i.find(".dropdown-menu li:not(.disabled):visible a")).length &&
               ((i = e.index(t.target)),
               38 == t.which && 0 < i && i--,
               40 == t.which && i < e.length - 1 && i++,
@@ -819,12 +818,11 @@ if ("undefined" == typeof jQuery)
       }),
       (a.prototype.checkScrollbar = function () {
         var t,
-          e = window.innerWidth;
-        e ||
-          (e =
+          e =
+            (e = window.innerWidth) ||
             (t = document.documentElement.getBoundingClientRect()).right -
-            Math.abs(t.left)),
-          (this.bodyIsOverflowing = document.body.clientWidth < e),
+              Math.abs(t.left);
+        (this.bodyIsOverflowing = document.body.clientWidth < e),
           (this.scrollbarWidth = this.measureScrollbar());
       }),
       (a.prototype.setScrollbar = function () {
@@ -1122,13 +1120,16 @@ if ("undefined" == typeof jQuery)
           i.addClass("in");
         var r = i[0].offsetWidth,
           s = i[0].offsetHeight;
-        "top" == e && s != n && (t.top = t.top + n - s);
-        a = this.getViewportAdjustedDelta(e, t, r, s);
-        a.left ? (t.left += a.left) : (t.top += a.top);
-        (e = /top|bottom/.test(e)),
-          (n = e ? 2 * a.left - o + r : 2 * a.top - n + s),
-          (s = e ? "offsetWidth" : "offsetHeight");
-        i.offset(t), this.replaceArrow(n, i[0][s], e);
+        "top" == e && s != n && (t.top = t.top + n - s),
+          (a = this.getViewportAdjustedDelta(e, t, r, s)).left
+            ? (t.left += a.left)
+            : (t.top += a.top),
+          (n = (e = /top|bottom/.test(e))
+            ? 2 * a.left - o + r
+            : 2 * a.top - n + s),
+          (s = e ? "offsetWidth" : "offsetHeight"),
+          i.offset(t),
+          this.replaceArrow(n, i[0][s], e);
       }),
       (h.prototype.replaceArrow = function (t, e, i) {
         this.arrow()
@@ -1181,12 +1182,13 @@ if ("undefined" == typeof jQuery)
         var e = (t = t || this.$element)[0],
           i = "BODY" == e.tagName,
           o = e.getBoundingClientRect();
-        null == o.width &&
-          (o = l.extend({}, o, {
-            width: o.right - o.left,
-            height: o.bottom - o.top,
-          }));
-        (e = i ? { top: 0, left: 0 } : t.offset()),
+        return (
+          null == o.width &&
+            (o = l.extend({}, o, {
+              width: o.right - o.left,
+              height: o.bottom - o.top,
+            })),
+          (e = i ? { top: 0, left: 0 } : t.offset()),
           (t = {
             scroll: i
               ? document.documentElement.scrollTop || document.body.scrollTop
@@ -1194,8 +1196,9 @@ if ("undefined" == typeof jQuery)
           }),
           (i = i
             ? { width: l(window).width(), height: l(window).height() }
-            : null);
-        return l.extend({}, o, t, i, e);
+            : null),
+          l.extend({}, o, t, i, e)
+        );
       }),
       (h.prototype.getCalculatedOffset = function (t, e, i, o) {
         return "bottom" == t
@@ -1426,9 +1429,8 @@ if ("undefined" == typeof jQuery)
             .find(this.selector)
             .map(function () {
               var t = n(this),
-                e = t.data("target") || t.attr("href"),
-                t = /^#./.test(e) && n(e);
-              return t && t.length && t.is(":visible")
+                e = t.data("target") || t.attr("href");
+              return (t = /^#./.test(e) && n(e)) && t.length && t.is(":visible")
                 ? [[t[i]().top + o, e]]
                 : null;
             })
@@ -1457,19 +1459,19 @@ if ("undefined" == typeof jQuery)
             this.activate(s[t]);
       }),
       (s.prototype.activate = function (t) {
-        (this.activeTarget = t), this.clear();
-        (t =
-          this.selector +
-          '[data-target="' +
-          t +
-          '"],' +
-          this.selector +
-          '[href="' +
-          t +
-          '"]'),
-          (t = n(t).parents("li").addClass("active"));
-        t.parent(".dropdown-menu").length &&
-          (t = t.closest("li.dropdown").addClass("active")),
+        (this.activeTarget = t),
+          this.clear(),
+          (t =
+            this.selector +
+            '[data-target="' +
+            t +
+            '"],' +
+            this.selector +
+            '[href="' +
+            t +
+            '"]'),
+          (t = n(t).parents("li").addClass("active")).parent(".dropdown-menu")
+            .length && (t = t.closest("li.dropdown").addClass("active")),
           t.trigger("activate.bs.scrollspy");
       }),
       (s.prototype.clear = function () {
@@ -1642,9 +1644,14 @@ if ("undefined" == typeof jQuery)
             "function" == typeof o && (o = e.bottom(this.$element));
           var s = this.getState(n, t, i, o);
           if (this.affixed != s) {
-            null != this.unpin && this.$element.css("top", "");
-            (e = "affix" + (s ? "-" + s : "")), (i = a.Event(e + ".bs.affix"));
-            if ((this.$element.trigger(i), i.isDefaultPrevented())) return;
+            if (
+              (null != this.unpin && this.$element.css("top", ""),
+              (e = "affix" + (s ? "-" + s : "")),
+              (i = a.Event(e + ".bs.affix")),
+              this.$element.trigger(i),
+              i.isDefaultPrevented())
+            )
+              return;
             (this.affixed = s),
               (this.unpin = "bottom" == s ? this.getPinnedOffset() : null),
               this.$element
