@@ -13,10 +13,10 @@ if ("undefined" == typeof jQuery)
     (t.fn.emulateTransitionEnd = function (e) {
       var i = !1,
         o = this;
-      t(this).one("bsTransitionEnd", function () {
-        i = !0;
-      });
       return (
+        t(this).one("bsTransitionEnd", function () {
+          i = !0;
+        }),
         setTimeout(function () {
           i || t(o).trigger(t.support.transition.end);
         }, e),
@@ -1323,8 +1323,10 @@ if ("undefined" == typeof jQuery)
         template:
           '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>',
       })),
-      (e.prototype = t.extend({}, t.fn.tooltip.Constructor.prototype)),
-      (e.prototype.constructor = e),
+      ((e.prototype = t.extend(
+        {},
+        t.fn.tooltip.Constructor.prototype
+      )).constructor = e),
       (e.prototype.getDefaults = function () {
         return e.DEFAULTS;
       }),

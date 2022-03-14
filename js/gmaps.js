@@ -52,10 +52,10 @@
       return e;
     },
     l = function (e, t) {
-      e = e.replace("#", "");
-      return "jQuery" in window && t
-        ? $("#" + e, t)[0]
-        : document.getElementById(e);
+      return (
+        (e = e.replace("#", "")),
+        "jQuery" in window && t ? $("#" + e, t)[0] : document.getElementById(e)
+      );
     },
     p = (function (e) {
       var t = document,
@@ -301,9 +301,7 @@
             "zoom_changed",
             this.hideContextMenu
           );
-          for (var T = 0; T < a.length; T++) {
-            (z = a[T]) in e && P(this.map, z);
-          }
+          for (var T = 0; T < a.length; T++) (z = a[T]) in e && P(this.map, z);
           for (T = 0; T < p.length; T++) {
             var z;
             (z = p[T]) in e && P(this.map, z);
@@ -542,9 +540,8 @@
     (p.prototype.removeMarkers = function (e) {
       var t = [];
       if (void 0 === e) {
-        for (var o = 0; o < this.markers.length; o++) {
+        for (var o = 0; o < this.markers.length; o++)
           (r = this.markers[o]).setMap(null), p.fire("marker_removed", r, this);
-        }
         this.markerClusterer &&
           this.markerClusterer.clearMarkers &&
           this.markerClusterer.clearMarkers(),
@@ -552,10 +549,10 @@
       } else {
         for (o = 0; o < e.length; o++) {
           var n = this.markers.indexOf(e[o]);
-          if (n > -1)
-            (r = this.markers[n]).setMap(null),
-              this.markerClusterer && this.markerClusterer.removeMarker(r),
-              p.fire("marker_removed", r, this);
+          n > -1 &&
+            ((r = this.markers[n]).setMap(null),
+            this.markerClusterer && this.markerClusterer.removeMarker(r),
+            p.fire("marker_removed", r, this));
         }
         for (o = 0; o < this.markers.length; o++) {
           var r;
@@ -1298,15 +1295,14 @@
           var L = w(t.fillColor, t.fillOpacity);
           s.push("fillcolor:" + L);
         }
-        var b = t.path;
-        if (b.join) {
-          var _;
-          for (m = 0; (_ = b[m]); m++) s.push(_.join(","));
-        } else s.push("enc:" + b);
+        var b,
+          _ = t.path;
+        if (_.join) for (m = 0; (b = _[m]); m++) s.push(b.join(","));
+        else s.push("enc:" + _);
         (s = s.join("|")), o.push("path=" + encodeURI(s));
       }
       var M = window.devicePixelRatio || 1;
-      return o.push("scale=" + M), n + (o = o.join("&"));
+      return o.push("scale=" + M), n + o.join("&");
     }),
     (p.prototype.addMapType = function (e, t) {
       if (!t.hasOwnProperty("getTileUrl") || "function" != typeof t.getTileUrl)
