@@ -327,8 +327,6 @@ a:hover {
   float: left;
   margin-top: 4px;
   font-size: 16px;
-  width: 48px;
-  height: 48px;
 }
 
 .navbar-nav .open .dropdown-menu > li > a {
@@ -341,7 +339,7 @@ a:hover {
 }
 
 .navbar-toggle {
-  margin: 10px 10px 0 0;
+  margin: 10px 0px 0 0;
   border: 0px;
 }
 
@@ -889,7 +887,71 @@ h4 {
   }
 }
 
+@media (max-width: 400px) {
+  .bloc {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/** Ajouts **/
+
+.col-sm-4 li {
+  padding: 6px;
+}
+
+.title-contact {
+  font-weight: bold;
+  color: black;
+}
+
+.btn-d {
+  margin: auto;
+  margin-left: 40%;
+  width: 20%;
+}
+
+.text-descript {
+  font-size: 22px;
+  color: #565858;
+  width: 60%;
+  margin: auto;
+}
+
+.text-temoignage {
+  font-size: 20px;
+  color: #565858;
+  font-style: italic;
+}
+
+.identite-temoignage {
+  color: #707070;
+  font-size: 16px;
+}
+
+.text-portfolio {
+  font-size: 25px;
+  color: #707070;
+}
+
+.logo_CA {
+  height: 40px;
+  width: 210px;
+}
+
+.image-resize-mode {
+  height: 100px;
+  width: 100px;
+}
+
 @media (max-width: 767px) {
+  .bloc-mob-center-text {
+    text-align: center;
+  }
+
+  .text-descript {
+    width: 80%;
+  }
   .page-container {
     overflow-x: hidden;
     position: relative;
@@ -904,6 +966,10 @@ h4 {
   #disqus_thread {
     padding-left: 10px !important;
     padding-right: 10px !important;
+  }
+  .row {
+    width: 90%;
+    margin: auto;
   }
   .b-parallax {
     background-attachment: scroll;
@@ -964,6 +1030,7 @@ h4 {
   .navbar-brand img {
     max-height: 40px;
     width: auto;
+    margin-left: 20px;
   }
   .nav-invert .navbar-header {
     float: none;
@@ -1026,65 +1093,4 @@ h4 {
     width: 180px;
     height: 320px;
   }
-}
-
-@media (max-width: 400px) {
-  .bloc {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .bloc-mob-center-text {
-    text-align: center;
-  }
-}
-
-/** Ajouts **/
-
-.col-sm-4 li {
-  padding: 6px;
-}
-
-.title-contact {
-  font-weight: bold;
-  color: black;
-}
-
-.btn-d {
-  margin: auto;
-  margin-left: 40%;
-  width: 20%;
-}
-
-.text-descript {
-  font-size: 22px;
-  color: #565858;
-  width: 60%;
-  margin: auto;
-}
-
-.text-temoignage {
-  font-size: 20px;
-  color: #565858;
-  font-style: italic;
-}
-
-.identite-temoignage {
-  color: #707070;
-  font-size: 16px;
-}
-
-.text-portfolio {
-  font-size: 25px;
-  color: #707070;
-}
-
-.logo_CA {
-  height: 48px;
-}
-
-.image-resize-mode {
-  height: 100px;
 }
