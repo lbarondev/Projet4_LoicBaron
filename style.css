@@ -579,6 +579,8 @@ a[data-lightbox]:hover img {
 #lightbox-modal .modal-dialog img {
   max-height: 90vh;
   margin: 0 auto;
+  height: 450px;
+  width: 450px;
 }
 
 .lightbox-caption {
