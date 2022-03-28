@@ -444,6 +444,9 @@ nav .caret {
 .mg-lg {
   margin-top: 10px;
   margin-bottom: 40px;
+
+  font-size: 20px;
+  color: white;
 }
 
 .btn {
@@ -665,6 +668,7 @@ a {
 
 .hero-bloc-text {
   font-size: 38px;
+  opacity: 1;
 }
 
 .hero-bloc-text-sub {
@@ -682,7 +686,7 @@ a {
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .tight-width-whitespace {
@@ -949,7 +953,11 @@ h4 {
   width: 100px;
 }
 
-/** **/
+.text-contact {
+  font-size: 20px;
+}
+
+/** Responsive **/
 
 @media (max-width: 767px) {
   .social {
