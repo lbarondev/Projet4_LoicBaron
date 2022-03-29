@@ -231,7 +231,7 @@ a:hover {
 .l-bloc h5 a,
 .l-bloc h6 a,
 .l-bloc p a {
-  color: rgba(0, 0, 0, 0.6);
+  font-size: 17px;
 }
 
 .d-bloc .panel .a-btn:hover,
@@ -249,7 +249,7 @@ a:hover {
 .l-bloc h5 a:hover,
 .l-bloc h6 a:hover,
 .l-bloc p a:hover {
-  color: rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .l-bloc .navbar-toggle .icon-bar {
@@ -324,6 +324,9 @@ a:hover {
   list-style-type: none;
 }
 
+li {
+  font-weight: bold;
+}
 .nav > li {
   float: left;
   margin-top: 4px;
