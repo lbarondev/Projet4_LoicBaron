@@ -958,8 +958,8 @@ h4 {
 }
 
 .logo_CA {
-  height: 50px;
-  width: 250px;
+  height: 45px;
+  width: auto;
 }
 
 .image-resize-mode {
@@ -1066,7 +1066,7 @@ h4 {
   }
   .navbar-brand img {
     max-height: 40px;
-    max-width: 190px;
+    width: auto;
   }
   .navbar-header {
     width: 100%;
